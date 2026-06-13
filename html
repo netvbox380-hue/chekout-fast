@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NA TV DE SUA CASA · Apenas $15/mês</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0a0a18; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #fff; min-height: 100vh; }
+
+/* HERO */
+.page { max-width: 520px; margin: 0 auto; }
+.hero { padding: 2.5rem 1.5rem 2rem; text-align: center; }
+.badge-top { display: inline-flex; align-items: center; gap: 6px; background: rgba(245,166,35,0.13); border: 1px solid rgba(245,166,35,0.35); color: #f5a623; font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 999px; margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.hero-title { font-size: 28px; font-weight: 800; line-height: 1.2; color: #fff; margin-bottom: 0.6rem; }
+.hero-title span { color: #f5a623; }
+.hero-sub { font-size: 14px; color: rgba(255,255,255,0.5); max-width: 380px; margin: 0 auto 1.8rem; line-height: 1.6; }
+
+.price-block { display: inline-flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(245,166,35,0.3); border-radius: 18px; padding: 1.25rem 2.5rem; margin-bottom: 1.8rem; position: relative; }
+.pulse-dot { position: absolute; top: -5px; right: -5px; width: 12px; height: 12px; background: #22c55e; border-radius: 50%; animation: pa 2s infinite; }
+@keyframes pa { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+.price-label { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
+.price-row { display: flex; align-items: flex-start; gap: 2px; }
+.price-cur { font-size: 20px; font-weight: 700; color: #f5a623; margin-top: 8px; }
+.price-val { font-size: 72px; font-weight: 800; color: #fff; line-height: 1; }
+.price-per { font-size: 13px; color: rgba(255,255,255,0.35); align-self: flex-end; margin-bottom: 8px; }
+.price-note { font-size: 11px; color: rgba(245,166,35,0.7); margin-top: 4px; }
+
+.cta-group { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+.btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 9px; background: #f5a623; color: #0d0d1f; font-size: 17px; font-weight: 800; padding: 18px 44px; border-radius: 13px; text-decoration: none; width: 100%; max-width: 380px; border: none; cursor: pointer; transition: background 0.15s, transform 0.1s; letter-spacing: 0.01em; }
+.btn-primary:hover { background: #ffba3a; transform: scale(1.01); }
+.btn-primary:active { transform: scale(0.97); }
+.btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 7px; background: transparent; color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 500; padding: 13px 36px; border-radius: 11px; border: 1px solid rgba(255,255,255,0.13); text-decoration: none; width: 100%; max-width: 380px; transition: border-color 0.15s, color 0.15s; }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+.counter-strip { text-align: center; padding: 0.65rem 1rem; background: rgba(245,166,35,0.06); border-top: 1px solid rgba(245,166,35,0.1); border-bottom: 1px solid rgba(245,166,35,0.1); font-size: 12px; color: rgba(245,166,35,0.8); display: flex; align-items: center; justify-content: center; gap: 7px; }
+.live-dot { width: 7px; height: 7px; background: #f5a623; border-radius: 50%; animation: pa 1.5s infinite; }
+.trust-strip { display: flex; justify-content: center; gap: 20px; padding: 0.75rem 1rem; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: rgba(255,255,255,0.4); }
+.trust-item i { color: #22c55e; font-size: 13px; }
+
+/* APPS SECTION */
+.apps-section { display: none; padding: 1.5rem; }
+.apps-section.visible { display: block; }
+.apps-section-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; text-align: center; margin-bottom: 1rem; }
+.apps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+/* APP CARDS */
+.app-card { background: #fff; border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; color: #1a1a2e; }
+.app-card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.5); }
+
+.app-card-img { width: 100%; height: 88px; display: flex; align-items: center; justify-content: center; }
+.img-fastpro { background: linear-gradient(135deg, #1a9aad 0%, #0d6e80 100%); }
+.img-fastwin { background: linear-gradient(135deg, #1a9595 0%, #0d7070 100%); }
+.img-lazer { background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%); }
+.img-funplay { background: linear-gradient(135deg, #f97316 0%, #c2410c 100%); }
+.img-blessed { background: linear-gradient(135deg, #4f46e5 0%, #312e81 100%); }
+.img-xcloud { background: linear-gradient(135deg, #0e9f8e 0%, #065f52 100%); }
+
+/* Logos SVG inline */
+.fastpro-logo { display: flex; align-items: center; gap: 6px; }
+.fp-text { display: flex; flex-direction: column; line-height: 1; }
+.fp-fast { font-size: 26px; font-weight: 900; color: #fff; }
+.fp-player { font-size: 13px; font-weight: 700; color: #fff; }
+.fp-arrow { width: 0; height: 0; border-top: 14px solid transparent; border-bottom: 14px solid transparent; border-left: 24px solid #f5a623; }
+
+.lazer-logo { display: flex; flex-direction: column; align-items: center; line-height: 1.1; }
+.lz-top { font-size: 20px; font-weight: 900; color: #fff; letter-spacing: 3px; }
+.lz-play { display: flex; align-items: center; gap: 5px; }
+.lz-tri { width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 18px solid #00d4aa; }
+.lz-word { font-size: 22px; font-weight: 900; color: #fff; }
+
+.fun-logo { font-size: 30px; font-weight: 900; color: #fff; display: flex; align-items: center; gap: 4px; }
+.fn-tri { display: inline-block; width: 0; height: 0; border-top: 11px solid transparent; border-bottom: 11px solid transparent; border-left: 20px solid #00d4aa; }
+
+.blessed-logo { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.blessed-text { font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.8); letter-spacing: 2px; text-transform: uppercase; }
+
+.cloud-logo { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.cloud-text { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 3px; }
+
+.app-card-body { padding: 10px 12px 12px; background: #fff; }
+.app-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 3px; }
+.app-card-name { font-size: 14px; font-weight: 700; color: #111; }
+.app-card-name span { font-size: 11px; font-weight: 400; color: #888; }
+.app-card-desc { font-size: 11px; color: #666; line-height: 1.45; margin-bottom: 8px; }
+.app-card-link { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: #c27a00; }
+
+.app-card-tag { display: inline-flex; align-items: center; gap: 3px; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+.tag-android { background: #e6f4ea; color: #1a6b35; }
+.tag-windows { background: #e3f0fb; color: #0a4a8a; }
+.tag-streaming { background: #f0eaff; color: #5b21b6; }
+.tag-premium { background: #fff8e6; color: #92560a; }
+.tag-smarttv { background: #e6f7f4; color: #0a5a50; }
+
+/* MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.78); z-index: 9999; align-items: center; justify-content: center; padding: 1rem; }
+.modal-overlay.open { display: flex; }
+.modal { background: #fff; border-radius: 18px; width: 100%; max-width: 400px; overflow: hidden; color: #1a1a2e; }
+.modal-header { display: flex; align-items: center; gap: 12px; padding: 16px 16px 12px; border-bottom: 1px solid #f0f0f0; }
+.modal-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: #fff; flex-shrink: 0; }
+.modal-app-name { font-size: 17px; font-weight: 700; color: #111; }
+.modal-app-sub { font-size: 12px; color: #888; }
+.modal-close { margin-left: auto; background: none; border: none; cursor: pointer; color: #aaa; font-size: 26px; line-height: 1; padding: 2px 6px; border-radius: 6px; }
+.modal-close:hover { background: #f0f0f0; color: #555; }
+.modal-body { padding: 16px; }
+.modal-desc { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 14px; }
+.modal-desc b { color: #111; }
+
+.step-list { display: flex; flex-direction: column; gap: 8px; }
+.step-item { display: flex; align-items: center; gap: 12px; background: #f8f8f8; border-radius: 10px; padding: 10px 14px; }
+.step-num { width: 30px; height: 30px; border-radius: 50%; background: #f5a623; color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.step-label { font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
+.step-value { font-size: 14px; font-weight: 700; color: #111; }
+
+.downloader-box { background: #1a6fd4; border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
+.downloader-label { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+.downloader-code { font-size: 34px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; }
+.downloader-icon { font-size: 22px; color: rgba(255,255,255,0.55); }
+
+.url-row { display: flex; align-items: center; gap: 8px; background: #f5f5f5; border-radius: 8px; padding: 8px 12px; margin-bottom: 10px; border: 1px solid #e8e8e8; }
+.url-text { font-size: 12px; color: #444; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.copy-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: 5px 9px; cursor: pointer; color: #888; font-size: 14px; transition: background 0.1s; }
+.copy-btn:hover { background: #eee; color: #444; }
+
+.btn-download { display: flex; align-items: center; justify-content: center; gap: 8px; background: #f5a623; color: #fff; font-size: 14px; font-weight: 700; padding: 14px; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; width: 100%; transition: background 0.15s; }
+.btn-download:hover { background: #e09515; }
+
+.obs-box { background: #eaf6ff; border-radius: 8px; padding: 10px 12px; margin-top: 12px; font-size: 12px; color: #1a5a8a; display: flex; gap: 7px; align-items: flex-start; line-height: 1.5; }
+.obs-box i { margin-top: 1px; flex-shrink: 0; }
+
+/* Responsivo */
+@media (max-width: 400px) {
+  .apps-grid { grid-template-columns: 1fr; }
+  .price-val { font-size: 58px; }
+  .hero-title { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="hero">
+    <div class="badge-top"><i class="ti ti-tv"></i> TV Digital na sua casa</div>
+    <h1 class="hero-title">Assista tudo que você quer<br><span>na TV da sua casa</span></h1>
+    <p class="hero-sub">Canais ao vivo, filmes, séries e esportes. Sem antena, sem parabólica. Funciona em qualquer TV.</p>
+    <div class="price-block">
+      <div class="pulse-dot"></div>
+      <div class="price-label">Por apenas</div>
+      <div class="price-row">
+        <span class="price-cur">$</span>
+        <span class="price-val">15</span>
+        <span class="price-per">/mês</span>
+      </div>
+      <div class="price-note">✓ Cancele quando quiser</div>
+    </div>
+    <div class="cta-group">
+      <a href="https://testeagora.tv/natv_de_sua_casa" class="btn-primary" target="_blank" onclick="showApps()">
+        <i class="ti ti-player-play"></i> Teste Agora
+      </a>
+      <a href="https://clientefinal.com/" class="btn-secondary" target="_blank">
+        <i class="ti ti-user-circle"></i> Área do Cliente · Gerenciar / Pagamento
+      </a>
+    </div>
+  </div>
+
+  <div class="counter-strip">
+    <div class="live-dot"></div>
+    Mais de 5.000 clientes ativos assistindo agora
+  </div>
+  <div class="trust-strip">
+    <div class="trust-item"><i class="ti ti-check"></i> Ativação imediata</div>
+    <div class="trust-item"><i class="ti ti-check"></i> Sem fidelidade</div>
+    <div class="trust-item"><i class="ti ti-check"></i> Suporte incluso</div>
+  </div>
+
+  <!-- APPS - aparece só após clicar Teste Agora -->
+  <div class="apps-section" id="appsSection">
+    <div class="apps-section-title">Nossos aplicativos · Clique para ver instruções</div>
+    <div class="apps-grid">
+
+      <!-- FastPro -->
+      <div class="app-card" onclick="openModal('fastpro')">
+        <div class="app-card-img img-fastpro">
+          <div class="fastpro-logo">
+            <div class="fp-text"><span class="fp-fast">Fast</span><span class="fp-player">Player</span></div>
+            <div class="fp-arrow"></div>
+          </div>
+        </div>
+        <div class="app-card-body">
+          <div class="app-card-header">
+            <div class="app-card-name">FastPro <span>(XCIPTV)</span></div>
+            <span class="app-card-tag tag-android"><i class="ti ti-brand-android"></i> Android</span>
+          </div>
+          <div class="app-card-desc">App XCIPTV customizado para Android com nossa marca e suporte integrado.</div>
+          <div class="app-card-link"><i class="ti ti-arrow-right"></i> Ver instruções</div>
+        </div>
+      </div>
+
+      <!-- FastWin -->
+      <div class="app-card" onclick="openModal('fastwin')">
+        <div class="app-card-img img-fastwin">
+          <div class="fastpro-logo">
+            <div class="fp-text"><span class="fp-fast">Fast</span><span class="fp-player">Player</span></div>
+            <div class="fp-arrow"></div>
+          </div>
+        </div>
+        <div class="app-card-body">
+          <div class="app-card-header">
+            <div class="app-card-name">FastWin <span>(Windows)</span></div>
+            <span class="app-card-tag tag-windows"><i class="ti ti-brand-windows"></i> Windows</span>
+          </div>
+          <div class="app-card-desc">Versão para PC com Windows, instalação direta via .exe customizado.</div>
+          <div class="app-card-link"><i class="ti ti-arrow-right"></i> Ver instruções</div>
+        </div>
+      </div>
+
+      <!-- LazerPlayer -->
+      <div class="app-card" onclick="openModal('lazer')">
+        <div class="app-card-img img-lazer">
+          <div class="lazer-logo">
+            <div class="lz-top">LAZER</div>
+            <div class="lz-play"><div class="lz-tri"></div><span class="lz-word">PLAY</span></div>
+          </div>
+        </div>
+        <div class="app-card-body">
+          <div class="app-card-header">
+            <div class="app-card-name">LazerPlayer</div>
+            <span class="app-card-tag tag-streaming"><i class="ti ti-player-play"></i> Streaming</span>
+          </div>
+          <div class="app-card-desc">Licenças do Lazer Player liberadas para todos os clientes. Ative em segundos.</div>
+          <div class="app-card-link"><i class="ti ti-arrow-right"></i> Ver instruções</div>
+        </div>
+      </div>
+
+      <!-- Fun Play -->
+      <div class="app-card" onclick="openModal('funplay')">
+        <div class="app-card-img img-funplay">
+          <div class="fun-logo">FUN <div class="fn-tri"></div> PLY</div>
+        </div>
+        <div class="app-card-body">
+          <div class="app-card-header">
+            <div class="app-card-name">Fun Play</div>
+            <span class="app-card-tag tag-streaming"><i class="ti ti-player-play"></i> Streaming</span>
+          </div>
+          <div class="app-card-desc">Licenças do Fun Play disponíveis para todos os clientes. Tela inicial já configurada.</div>
+          <div class="app-card-link"><i class="ti ti-arrow-right"></i> Ver instruções</div>
+        </div>
+      </div>
+
+      <!-- Blessed Player -->
+      <div class="app-card" onclick="openModal('blessed')">
+        <div class="app-card-img img-blessed">
+          <div class="blessed-logo">
+            <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+              <polygon points="22,3 41,13 41,31 22,41 3,31 3,13" fill="none" stroke="#ef4444" stroke-width="2.5"/>
+              <polygon points="22,10 35,17 35,27 22,34 9,27 9,17" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+              <polygon points="22,17 30,21.5 30,26 22,30 14,26 14,21.5" fill="#ef4444"/>
+              <polygon points="22,20 27,22.5 27,25 22,27.5 17,25 17,22.5" fill="white" opacity="0.9"/>
+            </svg>
+            <div class="blessed-text">BLESSED PLAYER</div>
+          </div>
+        </div>
+        <div class="app-card-body">
+          <div class="app-card-header">
+            <div class="app-card-name">Blessed Player</div>
+            <span class="app-card-tag tag-premium"><i class="ti ti-star"></i> Premium</span>
+          </div>
+          <div class="app-card-desc">Disponibilizamos licenças do Blessed Player para todos os clientes.</div>
+          <div class="app-card-link"><i class="ti ti-arrow-right"></i> Ver instruções</div>
+        </div>
+      </div>
+
+      <!-- XCloud TV -->
+      <div class="app-card" onclick="openModal('xcloud')">
+        <div class="app-card-img img-xcloud">
+          <div class="cloud-logo">
+            <svg width="52" height="34" viewBox="0 0 52 34" fill="none">
+              <rect x="1" y="12" width="30" height="18" rx="9" fill="white" opacity="0.85"/>
+              <rect x="16" y="4" width="26" height="18" rx="9" fill="white" opacity="0.65"/>
+              <polygon points="13,17 23,11 23,23" fill="#0e9f8e"/>
+              <polygon points="21,17 31,11 31,23" fill="#0e9f8e" opacity="0.65"/>
+            </svg>
+            <div class="cloud-text">CLOUD</div>
+          </div>
+        </div>
+        <div class="app-card-body">
+          <div class="app-card-header">
+            <div class="app-card-name">XCloud TV</div>
+            <span class="app-card-tag tag-smarttv"><i class="ti ti-tv"></i> Smart TV</span>
+          </div>
+          <div class="app-card-desc">Premium IPTV nas Smart TVs. Nas TVs LG aparece como "Premium IPTV".</div>
+          <div class="app-card-link"><i class="ti ti-arrow-right"></i> Ver instruções</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAIS ===== -->
+
+<!-- FastPro -->
+<div class="modal-overlay" id="modal-fastpro">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon" style="background:#1a8fa0;"><i class="ti ti-brand-android"></i></div>
+      <div><div class="modal-app-name">FastPro</div><div class="modal-app-sub">(XCIPTV) — Android</div></div>
+      <button class="modal-close" onclick="closeModal('fastpro')">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc">Baixe agora o nosso aplicativo <b>XCIPTV</b> customizado e tenha acesso completo aos seus conteúdos favoritos diretamente no seu dispositivo móvel. O app oferece uma experiência prática e intuitiva, com suporte integrado.</p>
+      <div class="downloader-box">
+        <div class="downloader-label">No aplicativo Downloader</div>
+        <div class="downloader-code">5279242 <i class="ti ti-brand-android downloader-icon"></i></div>
+      </div>
+      <div class="url-row">
+        <span class="url-text">http://aftv.news/5279242</span>
+        <button class="copy-btn" onclick="copyText('http://aftv.news/5279242', this)"><i class="ti ti-copy"></i></button>
+      </div>
+      <a href="http://aftv.news/5279242" class="btn-download" target="_blank"><i class="ti ti-download"></i> Download do IXC</a>
+    </div>
+  </div>
+</div>
+
+<!-- FastWin -->
+<div class="modal-overlay" id="modal-fastwin">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon" style="background:#1a9090;"><i class="ti ti-brand-windows"></i></div>
+      <div><div class="modal-app-name">FastWin</div><div class="modal-app-sub">Windows</div></div>
+      <button class="modal-close" onclick="closeModal('fastwin')">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc">Baixe agora o nosso aplicativo para <b>WINDOWS</b> customizado e tenha acesso completo aos seus conteúdos favoritos. Instalação simples via executável <b style="color:#c0392b;">.exe</b>.</p>
+      <div class="url-row">
+        <span class="url-text">https://appcliente.me/fastwin.exe</span>
+        <button class="copy-btn" onclick="copyText('https://appcliente.me/fastwin.exe', this)"><i class="ti ti-copy"></i></button>
+      </div>
+      <a href="https://appcliente.me/fastwin.exe" class="btn-download" target="_blank"><i class="ti ti-download"></i> Download para Windows</a>
+    </div>
+  </div>
+</div>
+
+<!-- LazerPlayer -->
+<div class="modal-overlay" id="modal-lazer">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon" style="background:#7c3aed;"><i class="ti ti-player-play"></i></div>
+      <div><div class="modal-app-name">LazerPlayer</div><div class="modal-app-sub">Streaming</div></div>
+      <button class="modal-close" onclick="closeModal('lazer')">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc">Disponibilizamos licenças do <b>Lazer Player</b> para todos os clientes. Para começar, basta inserir os dados abaixo na tela inicial do aplicativo:</p>
+      <div class="step-list">
+        <div class="step-item"><div class="step-num">1</div><div><div class="step-label">Código</div><div class="step-value">PFAST</div></div></div>
+        <div class="step-item"><div class="step-num">2</div><div><div class="step-label">Usuário</div><div class="step-value">USERNAME</div></div></div>
+        <div class="step-item"><div class="step-num">3</div><div><div class="step-label">Senha</div><div class="step-value">PASSWORD</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fun Play -->
+<div class="modal-overlay" id="modal-funplay">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon" style="background:#f97316;"><i class="ti ti-player-play"></i></div>
+      <div><div class="modal-app-name">Fun Play</div><div class="modal-app-sub">Streaming</div></div>
+      <button class="modal-close" onclick="closeModal('funplay')">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc">Disponibilizamos licenças do <b>Fun Play</b> para todos os clientes. Para começar, basta inserir os dados abaixo na tela inicial do aplicativo:</p>
+      <div class="step-list">
+        <div class="step-item"><div class="step-num">1</div><div><div class="step-label">Código</div><div class="step-value">PFAST</div></div></div>
+        <div class="step-item"><div class="step-num">2</div><div><div class="step-label">Usuário</div><div class="step-value">USERNAME</div></div></div>
+        <div class="step-item"><div class="step-num">3</div><div><div class="step-label">Senha</div><div class="step-value">PASSWORD</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Blessed Player -->
+<div class="modal-overlay" id="modal-blessed">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon" style="background:#4f46e5;"><i class="ti ti-star"></i></div>
+      <div><div class="modal-app-name">Blessed Player</div><div class="modal-app-sub">Premium</div></div>
+      <button class="modal-close" onclick="closeModal('blessed')">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc">Disponibilizamos licenças do <b>Blessed Player</b> para todos os clientes. Insira os dados abaixo na tela inicial do aplicativo:</p>
+      <div class="step-list">
+        <div class="step-item"><div class="step-num">1</div><div><div class="step-label">Código</div><div class="step-value">PFAST</div></div></div>
+        <div class="step-item"><div class="step-num">2</div><div><div class="step-label">Usuário</div><div class="step-value">USERNAME</div></div></div>
+        <div class="step-item"><div class="step-num">3</div><div><div class="step-label">Senha</div><div class="step-value">PASSWORD</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- XCloud TV -->
+<div class="modal-overlay" id="modal-xcloud">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon" style="background:#0e9f8e;"><i class="ti ti-tv"></i></div>
+      <div><div class="modal-app-name">XCloud TV</div><div class="modal-app-sub">Smart TV / Android</div></div>
+      <button class="modal-close" onclick="closeModal('xcloud')">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc">Disponibilizamos licenças do <b>XCloud TV</b> para todos os clientes. Insira os dados abaixo na tela inicial do aplicativo:</p>
+      <div class="step-list">
+        <div class="step-item"><div class="step-num">1</div><div><div class="step-label">Código</div><div class="step-value">PFAST</div></div></div>
+        <div class="step-item"><div class="step-num">2</div><div><div class="step-label">Usuário</div><div class="step-value">USERNAME</div></div></div>
+        <div class="step-item"><div class="step-num">3</div><div><div class="step-label">Senha</div><div class="step-value">PASSWORD</div></div></div>
+      </div>
+      <div class="obs-box"><i class="ti ti-info-circle"></i> <span>Nas TVs LG o aplicativo está com o nome <b>Premium IPTV</b>.</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showApps() {
+  var sec = document.getElementById('appsSection');
+  sec.classList.add('visible');
+  setTimeout(function() {
+    sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 80);
+}
+
+function openModal(id) {
+  document.getElementById('modal-' + id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById('modal-' + id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.modal-overlay').forEach(function(el) {
+  el.addEventListener('click', function(e) {
+    if (e.target === el) {
+      el.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(el) {
+      el.classList.remove('open');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(function() {
+    btn.innerHTML = '<i class="ti ti-check"></i>';
+    btn.style.color = '#22c55e';
+    setTimeout(function() {
+      btn.innerHTML = '<i class="ti ti-copy"></i>';
+      btn.style.color = '';
+    }, 1800);
+  }).catch(function() {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.innerHTML = '<i class="ti ti-check"></i>';
+    setTimeout(function() { btn.innerHTML = '<i class="ti ti-copy"></i>'; }, 1800);
+  });
+}
+</script>
+</body>
+</html>
